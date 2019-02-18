@@ -3,43 +3,81 @@
  <head>
       <title>Form Example</title>
    </head>
-   {{--these are comments--}}
+   @include('header')
+   @include('footer')
+      <body>
+         @yield('headerhead')
+      
+	 
+       <div class="containerform">
 
-   <body>
-      <form action = "/user/register/update" method = "post">
+  
+         @if (count($errors) > 0)
+            <div class = "alert alert-danger">
+               <ul>
+                  @foreach ($errors->all() as $error)
+                     <li>{{ $error }}</li>
+                  @endforeach
+               </ul>
+            </div>
+         @endif
+     <form action = "/user/register/update" method = "post" id="contact">
          <input type = "hidden" name = "_token" value = "{{ csrf_token() }}">
          <input type = "hidden" name = "id" value = "{{ $queryedit[0]->id }}">
-	
-	 
-         <table>
-            <tr>
-               <td>First Name</td>
-               <td><input type = "text" name = "fname" value="{{ $queryedit[0]->first_name }}"/></td>
-            </tr>
-             <tr>
-               <td>Last Name</td>
-               <td><input type = "text" name = "lname" value="{{ $queryedit[0]->last_name }}"/></td>
-            </tr>
-            <tr>
-               <td>Email Id</td>
-               <td><input type = "text" name = "emailid" value="{{ $queryedit[0]->email }}"/></td>
-            </tr>
-            <tr>
-               <td>School Name</td>
-               <td><input type = "text" name = "sname" value="{{ $queryedit[0]->school_name }}"/></td>
-            </tr>
-            <tr>
-               <td>School Rating</td>
-               <td><input type = "text" name = "srating" value="{{ $queryedit[0]->school_rating }}"/></td>
-            </tr>
-            <tr>
-               <td colspan = "2" align = "center">
-		
-                  <input type = "submit" value = "Update" />
-               </td>
-            </tr>
-         </table>
+   
+         <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
+   
+            <div class="row">
+               <div class="col-25">
+                  <label for="fname">First Name</label>
+               </div>
+               <div class="col-75">
+                  <input type="text" id="fname" name="fname" placeholder="Your name.." value="{{ $queryedit[0]->first_name }}"/>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-25">
+                  <label for="lname">Last Name</label>
+               </div>
+               <div class="col-75">
+                  <input type="text" id="lname" name="lname" placeholder="Your last name.." value="{{ $queryedit[0]->last_name }}"/>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-25">
+                  <label for="lname">Email Id</label>
+               </div>
+               <div class="col-75">
+                  <input type="text" id="emailid" name="emailid" placeholder="Your email id.."value="{{ $queryedit[0]->email }}"/>
+               </div>
+            </div>
+
+            <div class="row">
+               <div class="col-25">
+                  <label for="lname">School Name</label>
+               </div>
+               <div class="col-75">
+                  <input type="text" id="sname" name="sname" placeholder="Your school name.." value="{{ $queryedit[0]->school_name }}"/>
+               </div>
+            </div>
+
+            <div class="row">
+               <div class="col-25">
+                  <label for="lname">School Rating</label>
+               </div>
+               <div class="col-75">
+                  <input type="text" id="srating" name="srating" placeholder="Your school Rating.." value="{{ $queryedit[0]->school_rating }}"/>
+               </div>
+            </div>
+            <br>
+
+ 
+             <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Register</button>             
+         
       
       </form>
+   </div>
+<br></br>
+      @yield('footerfoot')
    </body>
 </html>
