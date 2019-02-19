@@ -1,18 +1,12 @@
 
 <html>
-
-<head>
-  
-</head>
-
-
+<head></head>
 @include('header')
 @include('footer')
-
-    <body>
+  <body>
       @yield('headerhead')
       <br><br>
-      <table align="center" style="width:50%" border='1px solid black'>
+    <table align="center" style="width:50%" border='1px solid black'>
       <tr>
         <th>Firstname</th>
         <th>Lastname</th> 
@@ -41,11 +35,12 @@
             @endif
             </tr>
          @endforeach
-       
-         
-
 
     </table>
-@yield('footerfoot')
+          <div align="center">
+            {{ $query->links() }}
+          </div>
+          <br><br><br>
+          @yield('footerfoot')
   </body>
 </html>

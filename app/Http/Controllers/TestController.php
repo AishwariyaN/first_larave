@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Controllers\Controller;
 
 class TestController extends Controller
 {
@@ -67,7 +67,7 @@ class TestController extends Controller
 	   public function showTable(Request $request){
  		//$id = $request->id;	
 
- 		$query= DB::table('school_details')->get();
+ 		$query= DB::table('school_details')->paginate(5);
  		//dd($query->toArray());
 		return view('showtable',compact('query'));
 		//echo 'hi';

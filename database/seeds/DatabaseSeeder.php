@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'seedtest'.'@gmail.com',
             'school_name'=>'test',
         ]);
+
     }
 }

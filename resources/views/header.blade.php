@@ -210,6 +210,23 @@ body {
    text-align: center;
 }
 
+.pagination li
+{
+display:inline;
+font-size: 15px;
+color: black;
+padding: 8px 16px;
+text-decoration: none;
+transition: background-color .3s;
+
+border: 1px solid #ddd; /* Gray */
+}
+
+.pagination li.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
