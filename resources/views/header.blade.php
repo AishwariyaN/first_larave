@@ -226,22 +226,32 @@ border: 1px solid #ddd; /* Gray */
   background-color: dodgerblue;
   color: white;
 }
+.error {
+    color:red;
+}
+.valid {
+    color:green;
+}
 
 </style>
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-</head>
+<meta name="csrf-token" content="{{ csrf_token() }}"> </head>
 <body>
   @section('headerhead')
   <div class="header">
-  <a href="#default" class="logo">School Data</a>
+  <a href="user/register/show" class="logo">Student Details</a>
   <div class="header-right">
            @if(Auth::id()==1)
           <a href="{{url('/registerform')}}">Register</a>
           <a href="{{url('/../user/register/show')}}">Table</a>
 
        @endif
+       <a href="{{ url('email') }}">Send Mail </a>
           <a class="active" href="{{ route('logout') }}"
               onclick="event.preventDefault();
                        document.getElementById('logout-form').submit();">

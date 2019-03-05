@@ -33,18 +33,19 @@ Route::get('user/register/edit/{id}','TestController@editTable');
 
 Route::post('user/register/update','TestController@updTable');
 
-Route::get('user/register/delete/{id}','TestController@deleteTable');
+Route::post('/user/register/delete','TestController@deleteTable');
 
 Route::post('/user/register',array('uses'=>'TestController@postRegister'));
 
 
 	});
-
-
 Route::get('user/register/show','TestController@showTable')->middleware('auth');
 
 
 
+Route::get('email','TestController@emailtest');
+
+Route::post('sendemail','TestController@sendemail');
 
 Route::resource('test','TestController');
 
@@ -53,3 +54,6 @@ Route::get('/resident/eloquent','TestController@eloquenttest');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+

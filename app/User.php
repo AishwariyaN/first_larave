@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Auth\Passwords\CanResetPassword;
 
 class User extends Authenticatable
 {
@@ -17,6 +18,13 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
+
+
+    protected $dispatchesEvents =[
+        'created'=> \App\Events\UserRegistered::class,
+    ];
+
+    //dd($event);
 
     /**
      * The attributes that should be hidden for arrays.

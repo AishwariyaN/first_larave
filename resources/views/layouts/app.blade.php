@@ -12,6 +12,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+    a:focus, a:active {
+  color: green;
+    }
+</style>
+
 </head>
 <body>
     <div id="app">
@@ -76,5 +83,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('jscheckmail')
 </body>
 </html>

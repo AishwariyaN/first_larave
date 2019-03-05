@@ -15,13 +15,16 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="email" type="email" class="form-control" name="email"  value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
+
                                 @endif
+                                <span class="help-block" id="showemailerr" style="color:red">
+                                    </span>
                             </div>
                         </div>
 
@@ -51,7 +54,7 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" id="loginbutton">
                                     Login
                                 </button>
 
@@ -64,6 +67,23 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>  
 </div>
+@endsection
+@section('jscheckmail')
+<script language="javascript" >
+
+    $('#loginbutton').click(function(e){
+    var email = document.getElementById('email');
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    if (!filter.test(email.value)) {
+    //alert('Please provide a valid email address');
+    $("#showemailerr").html('Provide valid email address')
+    e.preventDefault();
+    return false;
+    }
+ });
+ 
+</script>
 @endsection

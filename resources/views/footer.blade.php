@@ -21,7 +21,7 @@
     <body>
     @section('footerfoot')
     <div class="footer">
-      <p>Footer</p>
+      <p style="float:left">copyrights 2018</p>
     </div>
     @endsection
   </body>

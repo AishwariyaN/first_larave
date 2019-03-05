@@ -16,8 +16,12 @@
 
                     You are logged in!
                 </div>
+                <div class="panel-body">
+                    <a href="user/register/show">Show School Data</a>
+                </div>
             </div>
         </div>
     </div>
+    
 </div>
 @endsection
