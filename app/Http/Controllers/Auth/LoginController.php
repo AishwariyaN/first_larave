@@ -25,6 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
+    //dd('hi');
         protected $redirectTo = 'user/register/show';
 
     /**

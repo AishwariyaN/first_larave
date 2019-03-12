@@ -20,16 +20,18 @@ Route::get('age',[
    'uses' => 'TestController@index',
 ])->middleware('age');
 
+Auth::routes();
 
 Route::group(['middleware' => ['auth','admin']], function()
-	{
-
+{
 
 Route::get('/registerform','TestController@showForm');
 
-Route::get('user/{id}','TestController@showid');
+
 
 Route::get('user/register/edit/{id}','TestController@editTable');
+
+Route::get('user/register/show','TestController@showTable');
 
 Route::post('user/register/update','TestController@updTable');
 
@@ -37,9 +39,11 @@ Route::post('/user/register/delete','TestController@deleteTable');
 
 Route::post('/user/register',array('uses'=>'TestController@postRegister'));
 
+Route::get('user/{id}','TestController@showid');
 
-	});
-Route::get('user/register/show','TestController@showTable')->middleware('auth');
+//Route::get('user/redirect','SocialAuthFacebookController@redirect');
+
+});
 
 
 
@@ -51,9 +55,13 @@ Route::resource('test','TestController');
 
 Route::get('/resident/eloquent','TestController@eloquenttest');
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+Route::get('facebook', function () {
+    return view('facebook');
+});
+Route::get('auth/facebook', 'Auth\FacebookController@redirectToFacebook');
+
+Route::get('auth/facebook/callback', 'Auth\FacebookController@handleFacebookCallback');

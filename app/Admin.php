@@ -6,25 +6,21 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     use Notifiable;
 
+
+    protected $guard = 'admin';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','job_type'
     ];
 
-
-    protected $dispatchesEvents =[
-        'created'=> \App\Events\UserRegistered::class,
-    ];
-
-    //dd($event);
 
     /**
      * The attributes that should be hidden for arrays.
@@ -35,16 +31,5 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-     public function addNew($input)
-    {
-        $check = static::where('facebook_id',$input['facebook_id'])->first();
-
-
-        if(is_null($check)){
-            return static::create($input);
-        }
-
-
-        return $check;
-    }
+  
 }

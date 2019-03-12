@@ -244,11 +244,12 @@ border: 1px solid #ddd; /* Gray */
 <body>
   @section('headerhead')
   <div class="header">
-  <a href="user/register/show" class="logo">Student Details</a>
+  <a href="{{ url('user/register/show') }}" class="logo">Student Details</a>
   <div class="header-right">
            @if(Auth::id()==1)
           <a href="{{url('/registerform')}}">Register</a>
           <a href="{{url('/../user/register/show')}}">Table</a>
+          <a href="{{url('/../auth/facebook')}}">Login with Facebook</a>
 
        @endif
        <a href="{{ url('email') }}">Send Mail </a>

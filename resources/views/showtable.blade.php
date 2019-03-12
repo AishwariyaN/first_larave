@@ -1,15 +1,42 @@
 
 <html>
+
 <head>
   
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<style>
+.alert {
+  padding: 15px;
+  background-color: #f44336;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.success {
+  padding: 20px;
+  background-color: #32843e;
+  color: white;
+  margin-bottom: 10px;
+}
+</style>
 </head>
+ 
 @include('header')
 @include('footer')
   <body>
       @yield('headerhead')
       <br><br>
-      
+  
+
+@if(session()->get('successmsg') == "success")
+  <div class="success" style="width:65%;margin-left:18%">
+    <strong>Success!</strong> Data saved succesfully.
+  </div>
+@elseif(session()->get('successmsg') == "failure")
+<div class="alert" style="width:65%;margin-left:18%">
+    <strong>Error!</strong> Your data could not be saved
+  </div>
+@endif  
     <table align="center" style="width:50%" border='1px solid black'>
       <tr>
         <th>User Profile</th>
@@ -78,7 +105,7 @@
             url: check,
             data: {"id":delid,"img":user_image},
             success: function(result){
-              alert(result);
+//alert(result);
               if(result=='true')
               {
                 location.reload();

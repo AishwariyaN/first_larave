@@ -74,16 +74,27 @@ class TestController extends Controller
           $details->save();
         };
 		
-		//dd($details);
-
 
 		$details->save();
-		return redirect('user/register/show');
+		if($details->id > 0)
+		{
+			$result='success';
+		}
+		else
+		{
+			$result='failure';
+		}
+
+		//dd($result);
+		//return $result;
+		return redirect('user/register/show')->with('successmsg',$result);
 		
 	     
 	}
 
   	public function showForm(Request $request){
+
+
  		//$id = $request->id;
 		return view('register');
 
@@ -91,6 +102,10 @@ class TestController extends Controller
 
 	   public function showTable(Request $request){
  		//$id = $request->id;
+ 		//echo "Laravel	";
+
+ 		//dd($request->result);
+ 		//$a=$this->postRegister
  		$query= DB::table('school_details')->orderby('created_at','desc')->paginate(6);
  			
 		return view('showtable',compact('query'));

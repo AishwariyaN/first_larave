@@ -14,7 +14,7 @@ class RegisteredUsers extends Command
      *
      * @var string
      */
-    protected $signature = 'registered:users';
+    protected $signature = 'rad2deg(number)egistered:users';
 
     /**
      * The console command description.
