@@ -65,3 +65,13 @@ Route::get('facebook', function () {
 Route::get('auth/facebook', 'Auth\FacebookController@redirectToFacebook');
 
 Route::get('auth/facebook/callback', 'Auth\FacebookController@handleFacebookCallback');
+
+Route::prefix('/admin')->group( function ()
+{
+Route::get('/loginform','AdminLoginController@showLoginForm')->name('loginform');
+
+Route::post('/loginformsubmit','AdminLoginController@submitLoginForm')->name('loginformsubmit');
+
+Route::get('/','AdminController@index')->name('admindashboard');
+});
+

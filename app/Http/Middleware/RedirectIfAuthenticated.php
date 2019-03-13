@@ -17,9 +17,25 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
+        // if (Auth::guard($guard)->check()) {
 
-            return redirect('user/register/show');   
+        //     return redirect('user/register/show');   
+        // }
+
+        switch($guard)
+        {
+            case 'admin':
+              if (Auth::guard($guard)->check()) {
+                return redirect('admindashboard');   
+            }
+            break;
+            
+            default:
+            if (Auth::guard($guard)->check()) {
+                return redirect('user/register/show');   
+            }
+            break;
+
         }
 
         // if ( ! $this->auth->user() )
